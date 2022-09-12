@@ -21,8 +21,6 @@ namespace Monogame.src.Framework
         Renderer _renderer;
         InputManager _inputManager;
 
-        Texture2D _texture;
-
         public SceneManager(Application app)
         {
             _app = app;
@@ -41,18 +39,17 @@ namespace Monogame.src.Framework
 
         public void Initialize()
         {
-
+        
         }
 
         public void LoadContent()
         {
             _renderer.spriteBatch = new SpriteBatch(_app.GraphicsDevice);
-            _texture = _renderer.LoadT2D("ball");
         }
 
         public void Update()
         {
-           
+
         }
 
         public void Draw()
