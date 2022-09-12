@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace Monogame.src.Framework
+namespace Monogame.src.Framework.Input
 {
     public class InputManager
     {
@@ -18,7 +18,7 @@ namespace Monogame.src.Framework
             state = Keyboard.GetState();
         }
 
-        public Boolean IsKeyDown(Keys key)
+        public bool IsKeyDown(Keys key)
         {
             state = Keyboard.GetState();
             return state.IsKeyDown(key);
@@ -28,7 +28,7 @@ namespace Monogame.src.Framework
         {
             if (IsKeyDown(key))
                 callback();
-              
+
         }
 
     }

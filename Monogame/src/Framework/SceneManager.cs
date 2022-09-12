@@ -10,6 +10,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Monogame;
+using Monogame.src.Framework.Graphics;
+using Monogame.src.Framework.Input;
 
 namespace Monogame.src.Framework
 {
@@ -18,13 +20,17 @@ namespace Monogame.src.Framework
     {
         Application _app;
         ContentManager _content;
+
         Renderer _renderer;
         InputManager _inputManager;
+        Textures _textures;
 
         public SceneManager(Application app)
         {
+            // Initializing members
             _app = app;
             _inputManager = new InputManager();
+
             _content = _app.Content;
             _content.RootDirectory = "Content";
 
@@ -34,7 +40,7 @@ namespace Monogame.src.Framework
                 graphicsDevice = new GraphicsDeviceManager(_app),
                 content = _content,
             };
-
+            _textures = Textures.CreateTextures(_renderer);
         }
 
         public void Initialize()
@@ -45,6 +51,9 @@ namespace Monogame.src.Framework
         public void LoadContent()
         {
             _renderer.spriteBatch = new SpriteBatch(_app.GraphicsDevice);
+
+            // Texture loading
+            _textures.LoadTextures();
         }
 
         public void Update()
@@ -60,7 +69,12 @@ namespace Monogame.src.Framework
             _renderer.spriteBatch.Begin();
 
             // Rendering here
+            for (int i = 0; i < _renderer.graphicsDevice.PreferredBackBufferWidth; i += 16)
+            {
+                _renderer.DrawT2D(_textures.GrassAtlas, new Rectangle(i, 400, 16, 16), _textures.GrassGround1, Color.White, i, new Vector2(_textures.GrassGround1.Width / 2, _textures.GrassGround1.Height / 2), SpriteEffects.None, 0f);
 
+            }
+            
             _renderer.spriteBatch.End();
         }
     }
