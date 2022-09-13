@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Monogame.src.Framework.Tile;
+using Monogame.src.Framework.Tiles;
 
 using System;
 using System.Collections.Generic;
@@ -24,8 +24,28 @@ namespace Monogame.src.Framework.Graphics
             return content.Load<Texture2D>(path);
         }
 
-        public void DrawTilemap(TileMap map)
+        public void DrawTilemap(TileMap map, float rotation)
         {
+            for (int c = 0; c < map.cols; c++)
+            {
+                for (int r = 0; r < map.rows; r++)
+                {
+                    Tile tile = map.TileArray[c, r];
+                    if (tile.data.type != "air")
+                    {
+                        DrawT2D(
+                            tile.data.atlas,
+                            new Rectangle(c * map.cWidth, r * map.cHeight, map.cWidth, map.cHeight),
+                            tile.shape,
+                            Color.White,
+                            rotation,
+                            new Vector2(map.cWidth / 2, map.cHeight / 2),
+                            SpriteEffects.None,
+                            0f
+                             );
+                    }
+                }
+            }
 
         }
 

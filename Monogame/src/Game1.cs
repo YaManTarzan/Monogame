@@ -9,7 +9,7 @@ namespace Monogame
     {
         SceneManager sceneManager;
 
-        public Application(int width = 1080, int height = 720)
+        public Application(int width = 1072, int height = 720)
         {
             sceneManager = new SceneManager(this);
 

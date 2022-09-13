@@ -12,9 +12,19 @@ namespace Monogame.src.Framework.Graphics
     public class Textures
     {
 
+        // Backgrounds
+        public Texture2D defaultbg;
+
+        // Tiles
         public Texture2D GrassAtlas;
         public Rectangle GrassGround1;
 
+        public Texture2D DirtAtlas;
+        public Rectangle DirtBlock1;
+        public Rectangle DirtBlock2;
+        public Rectangle DirtBlock3;
+
+        
         private Renderer _renderer;
 
         private static bool isCreated = false;
@@ -27,9 +37,15 @@ namespace Monogame.src.Framework.Graphics
 
         public bool LoadTextures()
         {
+            defaultbg = _renderer.LoadT2D("Textures/defaultbg");
+
             GrassAtlas = _renderer.LoadT2D("Textures/grass_tiles");
             GrassGround1 = GetPieceOfAtlas(18, 0, 16, 16);
 
+            DirtAtlas = _renderer.LoadT2D("Textures/dirt_tiles");
+            DirtBlock1 = GetPieceOfAtlas(18, 18, 16, 16);
+            DirtBlock2 = GetPieceOfAtlas(36, 18, 16, 16);
+            DirtBlock3 = GetPieceOfAtlas(54, 18, 16, 16); 
 
             return true;
         }
