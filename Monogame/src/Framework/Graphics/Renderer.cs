@@ -24,7 +24,7 @@ namespace Monogame.src.Framework.Graphics
             return content.Load<Texture2D>(path);
         }
 
-        public void DrawTilemap(TileMap map, float rotation)
+        public void DrawTilemap(TileMap map)
         {
             for (int c = 0; c < map.cols; c++)
             {
@@ -38,7 +38,7 @@ namespace Monogame.src.Framework.Graphics
                             new Rectangle(c * map.cWidth, r * map.cHeight, map.cWidth, map.cHeight),
                             tile.shape,
                             Color.White,
-                            rotation,
+                            0f,
                             new Vector2(map.cWidth / 2, map.cHeight / 2),
                             SpriteEffects.None,
                             0f

@@ -24,9 +24,10 @@ namespace Monogame.src.Framework.Tiles
             cols = c;
             cWidth = width;
             cHeight = height;
+            TileArray = new Tile[cols, rows];
         }
 
-        public void FillMap(TileMap map)
+        public void GenerateChunk()
         {
 
         }

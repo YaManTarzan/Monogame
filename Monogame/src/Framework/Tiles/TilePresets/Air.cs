@@ -16,6 +16,7 @@ namespace Monogame.src.Framework.Tiles.TilePresets
             type = "air";
             startingShape = Textures.GetTextures().GrassGround1;
 
+
             toughness = 1;
             health = 1;
         }

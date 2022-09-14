@@ -27,6 +27,7 @@ namespace Monogame.src.Framework
         InputManager _inputManager;
         Textures _textures;
 
+        TileMap testing;
         BackGround bg;
 
         public SceneManager(Application app)
@@ -44,6 +45,7 @@ namespace Monogame.src.Framework
                 graphicsDevice = new GraphicsDeviceManager(_app),
                 content = _content,
             };
+            app.Window.AllowUserResizing = true;
             _renderer.graphicsDevice.PreferredBackBufferWidth = 1072;
 
             _textures = Textures.CreateTextures(_renderer);
@@ -51,7 +53,7 @@ namespace Monogame.src.Framework
 
         public void Initialize()
         {
-            
+            testing = new TileMap(16, 16, 100, 100);
         }
 
         public void LoadContent()
@@ -62,7 +64,7 @@ namespace Monogame.src.Framework
             _textures.LoadTextures();
 
             bg = new BackGround(_textures.defaultbg, new Vector2(0, 0));
-
+            WorldGeneration.AssignRandomValues(testing);
         }
 
         public void Update()
@@ -78,7 +80,8 @@ namespace Monogame.src.Framework
             _renderer.spriteBatch.Begin();
 
             // Rendering here
-            bg.Draw(_renderer);
+            _renderer.DrawTilemap(testing);
+            //bg.Draw(_renderer);
 
             _renderer.spriteBatch.End();
         }
